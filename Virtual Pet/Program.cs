@@ -9,19 +9,21 @@ namespace Virtual_Pet
 {
     class Program
     {
-        Pet doggo = new Pet("defualt_name");
+       static  Pet doggo = new Pet("defualt_name");
 
 
         static void Main()
         {
             string userInput;
             Console.WriteLine("Congratulations you are a recipiant of the new Virtual Pet. What are you going to name it?");
-            Program program = new Program();
-            new Thread(program.DogArt).Start();
+            //Program program = new Program();
+            doggo.Name = Console.ReadLine();
+            new Thread(DogTick).Start();
             while (5 > 1) // infinitely loops the game
             { 
                 while (5 > 1) // Infinite loop that will only exit upon correct user input
                 {
+                    GameDisplay();
                     userInput = Console.ReadLine().ToLower();
 
                     if (userInput == "play")
@@ -41,12 +43,21 @@ namespace Virtual_Pet
                     }
                 } // input loop
 
-                doggo.Tick(); // ticks after every user input
+                //doggo.Tick(); // ticks after every user input // comenting out for threading
             } // game loop
 
         }
 
-        void DogArt() // method shortcut for the ascii dog art - makes the code look nicer imo if its down here
+       static void DogTick()
+        {
+            while(true)
+            {
+                Thread.Sleep(500);
+                doggo.Tick();
+
+            }
+        }
+        static void GameDisplay() // method shortcut for the ascii dog art - makes the code look nicer imo if its down here
         {
 
             Console.Clear();

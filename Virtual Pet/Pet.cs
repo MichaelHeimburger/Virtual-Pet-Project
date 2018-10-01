@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_Pet
 {
+    
     class Pet
     {
         //fields
@@ -14,10 +15,13 @@ namespace Virtual_Pet
         public int boredom;
         public string name;
         //properties
+        
         public string Name
         {
             get { return this.name; }
-            set { this.name = value; }
+            set {
+                
+                this.name = value; }
         }
         public int Hunger
         {
@@ -52,6 +56,7 @@ namespace Virtual_Pet
         {
             hunger += 35;
             boredom -= 10;
+            
         }
         public void Drink()
         {
